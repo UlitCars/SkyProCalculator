@@ -11,25 +11,33 @@ import ru.skypro.calculator.service.CalculatorService;
 
 public class CalculatorController {
     private final CalculatorService calculatorService;
-    public CalculatorController(CalculatorService calculatorService){
+
+    public CalculatorController(CalculatorService calculatorService) {
         this.calculatorService = calculatorService;
     }
+
     @GetMapping
-    public String greetings(){
+    public String greetings() {
         return "Добро пожаловать в калькулятор!";
     }
+
     @GetMapping("/sum")
-    public String sum(@RequestParam Integer a, @RequestParam Integer b){
+    public String sum(@RequestParam Integer a, @RequestParam Integer b) {
         return a + " + " + b + " = " + calculatorService.sum(a, b);
     }
+
     @GetMapping("/minus")
-    public String minus(@RequestParam Integer a, @RequestParam Integer b){
+    public String minus(@RequestParam Integer a, @RequestParam Integer b) {
         return a + " - " + b + " = " + calculatorService.minus(a, b);
-    }    @GetMapping("/multiply")
-    public String multiply(@RequestParam Integer a, @RequestParam Integer b){
+    }
+
+    @GetMapping("/multiply")
+    public String multiply(@RequestParam Integer a, @RequestParam Integer b) {
         return a + " * " + b + " = " + calculatorService.multiply(a, b);
-    }    @GetMapping("/divide")
-    public String divide(@RequestParam Integer a, @RequestParam Integer b){
+    }
+
+    @GetMapping("/divide")
+    public String divide(@RequestParam Integer a, @RequestParam Integer b) {
         if (b == 0) return "Ошибка! Делить на 0 нельзя.";
         return a + " / " + b + " = " + calculatorService.divide(a, b);
     }
